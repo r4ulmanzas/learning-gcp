@@ -17,5 +17,9 @@ resource "google_compute_instance" "instance" {
   network_interface {
     network    = google_compute_network.vm_vpc.self_link
     subnetwork = google_compute_subnetwork.vm_subnet.self_link
+
+    access_config {
+      nat_ip = google_compute_address.public_static_ip_address.address
+    }
   }
 }

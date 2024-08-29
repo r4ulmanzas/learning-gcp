@@ -9,3 +9,9 @@ resource "google_compute_subnetwork" "vm_subnet" {
   region        = "us-central1"
   network       = google_compute_network.vm_vpc.id
 }
+
+resource "google_compute_address" "public_static_ip_address" {
+  name         = "publicforvminstance" # can't have a dash
+  address_type = "EXTERNAL"
+  region       = "us-central1"
+}
