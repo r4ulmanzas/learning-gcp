@@ -22,4 +22,11 @@ resource "google_compute_instance" "instance" {
       nat_ip = google_compute_address.public_static_ip_address.address
     }
   }
+
+  # Enhances availability for this single instance
+  scheduling {
+    preemptible         = false
+    on_host_maintenance = "MIGRATE"
+    automatic_restart   = true
+  }
 }
